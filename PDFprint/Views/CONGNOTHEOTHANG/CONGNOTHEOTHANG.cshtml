@@ -1,0 +1,53 @@
+﻿@model List<CONGNOTHEOTHANG>
+<h2>CONG NO THEO THANG</h2>
+
+<table class="table table-bordered table-striped">
+	<thead>
+		<tr>
+			<th>
+				ID
+			</th>
+			<th>
+				CHI NHÁNH
+			</th>
+			<th>
+				THÁNG
+			</th>
+			<th>
+				TÊN KHÁCH HÀNG
+			</th>
+			<th>
+
+			</th>
+			<th>
+
+			</th>
+		</tr>
+	</thead>
+	<tbody>
+		@foreach (var item in Model)
+		{
+			<tr>
+				<td>@item.id</td>
+				<td>@item.ChiNhanh</td>
+				<td>@item.Thang</td>
+				<td>@item.TenKhachHang</td>
+				<td>
+					<div class="w-75 btn-group" role="group">
+						<a asp-controller="CHITIETCONGNO" asp-action="CHITIET" asp-route-maKH="@item.MaKhachHang" asp-route-month="@item.Thang" class="btn btn-primary" mx-2>
+							<i class="bi bi-pencil-square"></i>Chi tiết
+						</a>
+					</div>
+				</td>
+				<td>
+					<div class="w-75 btn-group" role="group">
+						<a asp-controller="CHITIETCONGNO" asp-action="PrintPDF" asp-route-maKH="@item.MaKhachHang" asp-route-month="@item.Thang" class="btn btn-primary" mx-2>
+							<i class="bi bi-pencil-square"></i>In file PDF
+						</a>
+					</div>
+				</td>
+			</tr>
+
+		}
+	</tbody>
+</table>
